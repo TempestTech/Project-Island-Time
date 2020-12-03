@@ -9,7 +9,9 @@ public class PlayerCollinder : MonoBehaviour
     [SerializeField] public GameObject branch;
     [SerializeField] public Items axe;
     public float interactRange;
-    public Transform player;
+    public GameObject player;
+    public HUD hud;
+    private Animator animator;
 
     //private void OnTriggerEnter(Collider other)
     //{
@@ -33,27 +35,42 @@ public class PlayerCollinder : MonoBehaviour
 
     void Start()
     {
-        
+        animator = player.GetComponent<Animator>();
     }
 
     void Update()
     {
-        Vector3 distanceToPlayer = player.position - transform.position;
-        if (distanceToPlayer.magnitude <= interactRange)
+        Vector3 distanceToPlayer = player.transform.position - transform.position;
+        if (distanceToPlayer.magnitude <= interactRange && branch.activeSelf)
         {
             arrow[0].SetActive(true);
+            hud.OpenMessagePanel("If only I had something to cut this with...", gameObject);
             if (Input.GetKeyDown(KeyCode.E))
                 if (Inventory.instance.Include(axe))
-                    Destroy(branch);
-                else
-                    arrow[1].SetActive(true);
+                {
+                    StartCoroutine(axeCutting());
+                }
         }
         else
         {
             foreach (GameObject arr in arrow)
                 arr.SetActive(false);
+            hud.CloseMessagePanel(gameObject);
         }
             
+    }
+
+    private IEnumerator axeCutting()
+    {
+        Debug.Log("It's not waiting" +  Time.time);
+        animator.SetBool("Cutting", true);
+        yield return new WaitForSecondsRealtime(1.75f);
+        branch.SetActive(false);
+        hud.CloseMessagePanel(gameObject);
+        yield return new WaitForSecondsRealtime(1f);
+        animator.SetBool("Cutting", false);
+        Destroy(gameObject);
+        Debug.Log("It did wait" +  Time.time);
     }
     private void OnDrawGizmosSelected()
     {
