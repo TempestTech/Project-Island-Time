@@ -31,13 +31,14 @@ public class Inventory : MonoBehaviour
 
     public bool Include(Items item)
     {
-        Debug.Log("Inventory is " + (items.Any() ? "not " : "") + "empty");
-        if (items.Any())
-        {
-            Debug.Log("comparing " + items.Find(it => it.Equals(item)).itemName);
-            return items.Find(it => it.Equals(item));
-        }
-        else
-            return false;
+        Debug.Log("Inventory is " + (items.Any() ? "not " : "") + "empty" + items.Contains(item));
+        return items.Contains(item);
+        //if (items.Any())
+        //{
+        //    Debug.Log("comparing " + items.Contains(item));
+        //    return items.Contains(item);
+        //}
+        //else
+        //    return false;
     }
 }

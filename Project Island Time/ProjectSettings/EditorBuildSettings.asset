@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GameMenu.unity
+    path: Assets/Scenes/Start game/GameMenu.unity
     guid: 37d1bc438dfe002469b7ae9fc3bc132b
+  - enabled: 1
+    path: Assets/PrototypeScene 1.unity
+    guid: 9e9511bb4d9c2124b8f615e58eb6dc47
+  - enabled: 0
+    path: Assets/Scenes/Archive/PrototypeScene 2.unity
+    guid: adbde6628b81f414f8e955ae173cda5a
+  - enabled: 0
+    path: Assets/Scenes/PrototypeScene 1 Henry.unity
+    guid: 68db429d5930a3a4a80d3c39194acb41
   m_configObjects: {}

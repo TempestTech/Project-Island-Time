@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 338383891a4e8e846a124c9615d228fa, type: 3}
   m_Name: MapStars
   m_EditorClassIdentifier: 
-  itemName: MapStars
+  itemName: Map to the Stars
   icon: {fileID: 0}
   isDefaultItem: 0

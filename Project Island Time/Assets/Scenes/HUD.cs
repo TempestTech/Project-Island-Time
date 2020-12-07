@@ -30,6 +30,14 @@ public class HUD : MonoBehaviour
     public void CloseMessagePanel(GameObject _lastEncounter)
     {
         if (lastEncounter == _lastEncounter)
-            message.text = "";
+        {
+            StartCoroutine(waiter());
+        }
+    }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSecondsRealtime(1.0f);
+        message.text = "";
     }
 }

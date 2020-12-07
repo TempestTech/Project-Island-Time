@@ -32,9 +32,10 @@ public class PickUpObjects : MonoBehaviour
 
     private void pickUp()
     {
-        Debug.Log("You are picked up " + item.itemName);
+        hud.OpenMessagePanel("You picked up " + item.itemName, gameObject);
         Inventory.instance.Add(item);
         Destroy(gameObject);
+        //yield return new WaitForSecondsRealtime(2.0f);
         hud.CloseMessagePanel(gameObject);
     }
 
