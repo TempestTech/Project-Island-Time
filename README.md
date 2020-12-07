@@ -1,2 +1,2 @@
-# Project-Island-Time
+# Untold Island
 A single player adventure game.
